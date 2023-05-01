@@ -1,6 +1,7 @@
 package tp4;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,9 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import tp4.MenuPrincipal.eventoEjercicio1;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.SystemColor;
 
 public class Contacto extends JFrame{
 
@@ -33,26 +36,39 @@ public class Contacto extends JFrame{
 			
 			//constructor
 			public Contacto (){
+				//CONFIGURO PARÁMETROS Y UBICACIÓN DE LA VENTANA
+				Dimension dVentana = new Dimension(400, 400);	//MISMO TAMAÑO QUE EN SETBOUNDS!!!
+				Dimension dPantalla = Toolkit.getDefaultToolkit().getScreenSize();
+				int posX = (int) (dPantalla.getWidth() - dVentana.getWidth()) / 2;
+				int posY = (int) (dPantalla.getHeight() - dVentana.getHeight()) / 2;
+				//this.setLocation(posX, posY);
+				//this.setSize(dVentana);
+				
+				setTitle("Contactos");
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				setBounds(550,250,400,400);
+				setBounds(posX,posY,400,400);
 				setTitle("Contactos");
 				getContentPane().setLayout(null);
 				
 				nombre = new JLabel();
+				nombre.setFont(new Font("Tahoma", Font.BOLD, 11));
 				nombre.setText("Nombre:");
-				nombre.setBounds(40, 10, 100, 30);
+				nombre.setBounds(50, 43, 74, 30);
 				
 				apellido = new JLabel();
+				apellido.setFont(new Font("Tahoma", Font.BOLD, 11));
 				apellido.setText("Apellido:");
-				apellido.setBounds(40, 50, 100, 30);
+				apellido.setBounds(50, 83, 74, 30);
 				
 				telefono = new JLabel();
+				telefono.setFont(new Font("Tahoma", Font.BOLD, 11));
 				telefono.setText("Telefono:");
-				telefono.setBounds(40, 90, 100, 30);
+				telefono.setBounds(50, 123, 74, 30);
 				
 				fechaNacimiento = new JLabel();
+				fechaNacimiento.setFont(new Font("Tahoma", Font.BOLD, 11));
 				fechaNacimiento.setText("Fecha Nac.:");
-				fechaNacimiento.setBounds(40, 130, 100, 30);
+				fechaNacimiento.setBounds(50, 163, 74, 30);
 				
 				txtNombre = new JTextField();
 				txtNombre.addKeyListener(new KeyAdapter() {
@@ -63,7 +79,7 @@ public class Contacto extends JFrame{
 						if((c<'a' || c>'z') && (c<'A' || c>'Z')) letra.consume();					
 					}
 				});
-				txtNombre.setBounds(120, 15, 200, 20);
+				txtNombre.setBounds(130, 48, 200, 20);
 				
 				txtApellido = new JTextField();
 				txtApellido.addKeyListener(new KeyAdapter() {
@@ -74,7 +90,7 @@ public class Contacto extends JFrame{
 						if ((c<'a' || c>'z') && (c<'A' || c>'Z')) e.consume();	
 					}
 				});
-				txtApellido.setBounds(120, 55, 200, 20);
+				txtApellido.setBounds(130, 88, 200, 20);
 				
 				txtTelefono = new JTextField();
 				txtTelefono.addKeyListener(new KeyAdapter() {
@@ -86,7 +102,7 @@ public class Contacto extends JFrame{
 						
 					}
 				});
-				txtTelefono.setBounds(120, 95, 200, 20);
+				txtTelefono.setBounds(130, 128, 200, 20);
 				
 				txtFechaNacimiento = new JTextField();
 				txtFechaNacimiento.addKeyListener(new KeyAdapter() {
@@ -97,17 +113,20 @@ public class Contacto extends JFrame{
 						if((c<'0' || c>'9') && (c<'/' || c>'/')) f.consume();
 					}
 				});
-				txtFechaNacimiento.setBounds(120, 135, 200, 20);
+				txtFechaNacimiento.setBounds(130, 168, 200, 20);
 				
 				//campo para mostrar los datos ingresados
 				resultado = new JLabel();
-				resultado.setBounds(30, 200, 300, 200);
+				resultado.setFont(new Font("Tahoma", Font.PLAIN, 11));
+				resultado.setBounds(39, 301, 300, 37);
 				
 				
 				//crear el boton mostar
 				btnAceptar = new JButton();
+				btnAceptar.setBackground(SystemColor.activeCaption);
+				btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 11));
 				btnAceptar.setText("Mostrar");
-				btnAceptar.setBounds(220, 170, 100, 30);
+				btnAceptar.setBounds(230, 203, 100, 30);
 				
 				panel = new JPanel();
 				panel.setBounds(550,250,300,300);
@@ -125,6 +144,10 @@ public class Contacto extends JFrame{
 				panel.add(resultado);
 				
 				setContentPane(panel);
+				
+				JLabel label = new JLabel("Los datos ingresados fueron:");
+				label.setBounds(29, 279, 208, 14);
+				panel.add(label);
 				
 				btnAceptar.addActionListener(new eventoMostrar());
 				
@@ -168,7 +191,7 @@ public class Contacto extends JFrame{
 						txtFechaNacimiento.setBackground(Color.WHITE);
 					}
 					if (bValidacion) {
-						resultado.setText("Los datos ingresados fueron: " + txtNombre.getText() + ", " 
+						resultado.setText(txtNombre.getText() + ", " 
 									+ txtApellido.getText() + ", " + txtTelefono.getText() 
 									+ ", " + txtFechaNacimiento.getText());
 						txtNombre.setBackground(Color.WHITE);
@@ -275,5 +298,4 @@ public class Contacto extends JFrame{
 			public static long getSerialversionuid() {
 				return serialVersionUID;
 			}
-
 }
