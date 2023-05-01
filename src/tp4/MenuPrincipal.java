@@ -54,11 +54,11 @@ private static final long serialVersionUID = 1L;
 		
 
 		//para que respete las x e y que se indican en los controles.
-		setLayout(null);
+		getContentPane().setLayout(null);
 		
 		//agregar evento al hacer clic en el boton 1
 		boton1.addActionListener(new eventoEjercicio1());
-		
+		boton2.addActionListener(new eventoEjercicio2());
 	}
 	
 	
@@ -66,6 +66,7 @@ private static final long serialVersionUID = 1L;
 	public void cambiarVisibilidad(boolean estado) {
 		setVisible(estado);
 	}
+	
 	
 	//eventos
 		class eventoEjercicio1 implements ActionListener {
@@ -75,6 +76,15 @@ private static final long serialVersionUID = 1L;
 				Contacto ejercicio1 = new Contacto();
 				ejercicio1.cambiarVisibilidad(true);
 			}
+		}
+		class eventoEjercicio2 implements ActionListener {
+			
+			@Override
+			public void actionPerformed(ActionEvent c) {
+				Promedio ejercicio2 = new Promedio();
+			    ejercicio2.cambiarVisibilidad();
+				}	
 			
 		}
 }
+

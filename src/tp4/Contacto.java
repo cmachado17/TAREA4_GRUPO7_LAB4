@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import tp4.MenuPrincipal.eventoEjercicio1;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Contacto extends JFrame{
 
@@ -34,7 +36,7 @@ public class Contacto extends JFrame{
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				setBounds(550,250,400,400);
 				setTitle("Contactos");
-				setLayout(null);
+				getContentPane().setLayout(null);
 				
 				nombre = new JLabel();
 				nombre.setText("Nombre:");
@@ -53,15 +55,48 @@ public class Contacto extends JFrame{
 				fechaNacimiento.setBounds(40, 130, 100, 30);
 				
 				txtNombre = new JTextField();
+				txtNombre.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyTyped(KeyEvent letra) {
+						char c = letra.getKeyChar();
+						
+						if((c<'a' || c>'z') && (c<'A' || c>'Z')) letra.consume();					
+					}
+				});
 				txtNombre.setBounds(120, 15, 200, 20);
 				
 				txtApellido = new JTextField();
+				txtApellido.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyTyped(KeyEvent e) {
+						char c = e.getKeyChar();
+						
+						if ((c<'a' || c>'z') && (c<'A' || c>'Z')) e.consume();	
+					}
+				});
 				txtApellido.setBounds(120, 55, 200, 20);
 				
 				txtTelefono = new JTextField();
+				txtTelefono.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyTyped(KeyEvent a) {
+						char c = a.getKeyChar();
+						
+						if(c<'0' || c>'9') a.consume();
+						
+					}
+				});
 				txtTelefono.setBounds(120, 95, 200, 20);
 				
 				txtFechaNacimiento = new JTextField();
+				txtFechaNacimiento.addKeyListener(new KeyAdapter() {
+					@Override
+					public void keyTyped(KeyEvent f) {
+						char c= f.getKeyChar();
+						
+						if((c<'0' || c>'9') && (c<'/' || c>'/')) f.consume();
+					}
+				});
 				txtFechaNacimiento.setBounds(120, 135, 200, 20);
 				
 				//campo para mostrar los datos ingresados
