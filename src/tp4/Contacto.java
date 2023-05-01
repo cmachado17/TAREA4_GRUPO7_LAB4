@@ -194,17 +194,23 @@ public class Contacto extends JFrame{
 						resultado.setText(txtNombre.getText() + ", " 
 									+ txtApellido.getText() + ", " + txtTelefono.getText() 
 									+ ", " + txtFechaNacimiento.getText());
-						txtNombre.setBackground(Color.WHITE);
-						txtNombre.setText("");
-						txtApellido.setBackground(Color.WHITE);
-						txtApellido.setText("");
-						txtTelefono.setBackground(Color.WHITE);
-						txtTelefono.setText("");
-						txtFechaNacimiento.setBackground(Color.WHITE);
-						txtFechaNacimiento.setText("");
+						resetearCampos();
+					}else {
+						resultado.setText("");
 					}
 				}
 				
+			}
+			
+			private void resetearCampos() {
+				txtNombre.setBackground(Color.WHITE);
+				txtNombre.setText("");
+				txtApellido.setBackground(Color.WHITE);
+				txtApellido.setText("");
+				txtTelefono.setBackground(Color.WHITE);
+				txtTelefono.setText("");
+				txtFechaNacimiento.setBackground(Color.WHITE);
+				txtFechaNacimiento.setText("");
 			}
 			
 			public JPanel getPanel() {

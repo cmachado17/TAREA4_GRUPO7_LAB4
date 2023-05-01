@@ -71,6 +71,7 @@ private static final long serialVersionUID = 1L;
 		//agregar evento al hacer clic en el boton 1
 		boton1.addActionListener(new eventoEjercicio1());
 		boton2.addActionListener(new eventoEjercicio2());
+		boton3.addActionListener(new eventoEjercicio3());
 	}
 	
 	
@@ -96,7 +97,13 @@ private static final long serialVersionUID = 1L;
 				Promedio ejercicio2 = new Promedio();
 			    ejercicio2.cambiarVisibilidad();
 				}	
-			
+		}
+		class eventoEjercicio3 implements ActionListener{
+			@Override
+			public void actionPerformed(ActionEvent c) {
+				SeleccionMultiple ejercicio3 = new SeleccionMultiple();
+			    ejercicio3.cambiarVisibilidad();
+				}
 		}
 }
 

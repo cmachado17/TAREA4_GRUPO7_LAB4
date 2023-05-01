@@ -24,6 +24,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Promedio extends JFrame {
 
@@ -50,7 +52,7 @@ public class Promedio extends JFrame {
 		//this.setSize(dVentana)
 		
 		setTitle("Promedio");
-		setBounds(posX, posY, 500, 370);
+		setBounds(posX, posY, 500, 479);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -60,13 +62,13 @@ public class Promedio extends JFrame {
 		///JPANEL NOTAS
 		JPanel panelNotas = new JPanel();
 		panelNotas.setBorder(new TitledBorder(null, "Notas del estudiante", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
-		panelNotas.setBounds(49, 11, 392, 171);
+		panelNotas.setBounds(49, 11, 305, 171);
 		contentPane.add(panelNotas);
 		panelNotas.setLayout(null);
 				
 		
 		///NOTA 1
-		JLabel lblNota1 = new JLabel("Nota1 ");
+		JLabel lblNota1 = new JLabel("Nota 1:");
 		lblNota1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNota1.setBounds(37, 36, 61, 14);
 		panelNotas.add(lblNota1);
@@ -88,13 +90,13 @@ public class Promedio extends JFrame {
 				   }
 			}
 		});
-		txtNota1.setBounds(108, 33, 122, 20);
+		txtNota1.setBounds(118, 33, 144, 20);
 		txtNota1.setColumns(10);
 		panelNotas.add(txtNota1);
 		
 		
 		///NOTA 2
-		JLabel lblNota2 = new JLabel("Nota2");
+		JLabel lblNota2 = new JLabel("Nota 2:");
 		lblNota2.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNota2.setBounds(37, 66, 61, 14);
 		panelNotas.add(lblNota2);
@@ -115,7 +117,7 @@ public class Promedio extends JFrame {
 			   }
 			}
 		});
-		txtNota2.setBounds(108, 63, 122, 20);
+		txtNota2.setBounds(118, 64, 144, 20);
 		txtNota2.setColumns(10);
 		panelNotas.add(txtNota2);
 		
@@ -137,11 +139,11 @@ public class Promedio extends JFrame {
 			   }
 			}
 		});
-		txtNota3.setBounds(108, 96, 122, 20);
+		txtNota3.setBounds(118, 94, 144, 20);
 		panelNotas.add(txtNota3);
 		txtNota3.setColumns(10);
 		
-		JLabel lblNota3 = new JLabel("Nota3");
+		JLabel lblNota3 = new JLabel("Nota 3:");
 		lblNota3.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNota3.setBounds(37, 99, 61, 14);
 		panelNotas.add(lblNota3);
@@ -154,7 +156,7 @@ public class Promedio extends JFrame {
 		panelNotas.add(label);
 		
 		JComboBox cbxTps = new JComboBox();
-		cbxTps.setBounds(107, 127, 123, 20);
+		cbxTps.setBounds(118, 127, 144, 20);
 		cbxTps.addItem("Aprobado");
 		cbxTps.addItem("Desaprobado");
 		panelNotas.add(cbxTps);		
@@ -163,41 +165,35 @@ public class Promedio extends JFrame {
 		///JPANEL CÁLCULO
 		JPanel panelCalculo = new JPanel();
 		panelCalculo.setBorder(new TitledBorder(null, "Notas del estudiante", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelCalculo.setBounds(49, 193, 392, 127);
+		panelCalculo.setBounds(49, 193, 305, 127);
 		contentPane.add(panelCalculo);
 		panelCalculo.setLayout(null);
 		
-		JLabel lblPromedios = new JLabel("Promedio");
+		JLabel lblPromedios = new JLabel("Promedio:");
 		lblPromedios.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblPromedios.setBounds(65, 39, 71, 14);
+		lblPromedios.setBounds(41, 41, 71, 14);
 		panelCalculo.add(lblPromedios);
 		
 		txtPromedio = new JTextField();
-		txtPromedio.setBounds(146, 38, 134, 20);
+		txtPromedio.setBounds(122, 38, 144, 20);
 		panelCalculo.add(txtPromedio);
 		txtPromedio.setColumns(10);
 		
-		JLabel lblCondicion = new JLabel("Condicion");
+		JLabel lblCondicion = new JLabel("Condicion:");
 		lblCondicion.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCondicion.setBounds(65, 75, 71, 14);
+		lblCondicion.setBounds(41, 78, 71, 14);
 		panelCalculo.add(lblCondicion);
 		
 		txtCondicion = new JTextField();
-		txtCondicion.setBounds(146, 75, 134, 20);
+		txtCondicion.setBounds(122, 75, 144, 20);
 		panelCalculo.add(txtCondicion);
 		txtCondicion.setColumns(10);
 		
 		
-		///BOTÓN NUEVO
-		JButton btnNuevo = new JButton("NUEVO");
-		btnNuevo.setBackground(SystemColor.activeCaption);
-		btnNuevo.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnNuevo.setBounds(259, 59, 110, 23);
-		panelNotas.add(btnNuevo);
-		
-		
 		///BOTÓN CALCULAR
 		JButton btnCalcular = new JButton("CALCULAR");
+		btnCalcular.setBounds(364, 39, 110, 35);
+		contentPane.add(btnCalcular);
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -266,26 +262,46 @@ public class Promedio extends JFrame {
 		});
 		btnCalcular.setBackground(SystemColor.activeCaption);
 		btnCalcular.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCalcular.setBounds(259, 25, 110, 23);
-		panelNotas.add(btnCalcular);
 		
 		
 		///BOTÓN SALIR
 		JButton btnSalir = new JButton("SALIR");
+		btnSalir.setBounds(364, 117, 110, 35);
+		contentPane.add(btnSalir);
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				CloseFrame();
 			}
 		});
 		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnSalir.setBounds(259, 93, 110, 23);
-		panelNotas.add(btnSalir);
 		btnSalir.setBackground(SystemColor.activeCaption);
 		btnSalir.setForeground(Color.BLACK);
+		
+		
+		///BOTÓN NUEVO
+		JButton btnNuevo = new JButton("NUEVO");
+		btnNuevo.setBounds(364, 79, 110, 35);
+		contentPane.add(btnNuevo);
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 txtNota1.setText("");;
+				 txtNota2.setText("");
+				 txtNota3.setText("");
+				 txtPromedio.setText("");
+				 txtCondicion.setText("");
+			}
+		});
+		btnNuevo.setBackground(SystemColor.activeCaption);
+		btnNuevo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
 		
 
 	}
 	///MÉTODOS 
+	public void CloseFrame() {
+		super.dispose();
+	}
+	
 	public boolean hayDesaprobadas(float nota1, float nota2, float nota3) {
 		
 		if(nota1<6 || nota2<6 || nota3<6) {
