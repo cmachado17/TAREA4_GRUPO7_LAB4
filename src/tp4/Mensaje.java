@@ -46,23 +46,20 @@ public class Mensaje extends JFrame {
 		
 		JLabel lblInfo = new JLabel("");
 		lblInfo.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblInfo.setBounds(87, 22, 500, 47);
+		lblInfo.setBounds(87, 22, 550, 47);
 		contentPane.add(lblInfo);
 		
 		lblInfo.setText(primero);
 		
 		//mostrar label
 		for (String string : segundo) {
-			System.out.println("esto tiene string: " + string);
-			if(string != null) {
-				System.out.println(lblInfo.getText());
-				lblInfo.setText(lblInfo.getText() + "- " + string);
 			
+			if(string != null) {
+				lblInfo.setText(lblInfo.getText() + " - " + string);
 			}
 		}
 		
-		lblInfo.setText(lblInfo.getText() + "- " + tercero);
-		System.out.println(lblInfo.getText());
+		lblInfo.setText(lblInfo.getText() + " - " + tercero);
 		
 		JButton btn = new JButton("Aceptar");
 		btn.addActionListener(new ActionListener() {
