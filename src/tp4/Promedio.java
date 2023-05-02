@@ -45,7 +45,7 @@ public class Promedio extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		//CONFIGURO PARÁMETROS Y UBICACIÓN DE LA VENTANA
-		Dimension dVentana = new Dimension(500, 350);	//MISMO TAMAÑO QUE EN SETBOUNDS!!!
+		Dimension dVentana = new Dimension(500, 390);  //MISMO TAMAÑO QUE EN SETBOUNDS!!!
 		Dimension dPantalla = Toolkit.getDefaultToolkit().getScreenSize();
 		int posX = (int) (dPantalla.getWidth() - dVentana.getWidth()) / 2;
 		int posY = (int) (dPantalla.getHeight() - dVentana.getHeight()) / 2;
@@ -53,7 +53,7 @@ public class Promedio extends JFrame {
 		//this.setSize(dVentana)
 		
 		setTitle("Promedio");
-		setBounds(posX, posY, 500, 479);
+		setBounds(posX, posY, 500, 390);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);

@@ -21,6 +21,7 @@ import java.awt.SystemColor;
 
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
+import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -31,7 +32,7 @@ public class SeleccionMultiple extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txtHoras;
 
 	public void cambiarVisibilidad() {
 		setVisible(true);
@@ -41,7 +42,7 @@ public class SeleccionMultiple extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		//CONFIGURO PARÁMETROS Y UBICACIÓN DE LA VENTANA
-		Dimension dVentana = new Dimension(500, 350);	//MISMO TAMAÑO QUE EN SETBOUNDS!!!
+		Dimension dVentana = new Dimension(500, 385);	//MISMO TAMAÑO QUE EN SETBOUNDS!!!
 		Dimension dPantalla = Toolkit.getDefaultToolkit().getScreenSize();
 		int posX = (int) (dPantalla.getWidth() - dVentana.getWidth()) / 2;
 		int posY = (int) (dPantalla.getHeight() - dVentana.getHeight()) / 2;
@@ -49,43 +50,56 @@ public class SeleccionMultiple extends JFrame {
 		//this.setSize(dVentana)
 		
 		setTitle("Seleccion multiple");
-		setBounds(posX, posY, 500, 479);
+		setBounds(posX, posY, 500, 385);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(36, 59, 409, 42);
-		contentPane.add(panel);
 		
+		///SECCIÓN SISTEMAS OPERATIVOS
+		JPanel panelSO = new JPanel();
+		panelSO.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelSO.setBounds(36, 30, 409, 42);
+		contentPane.add(panelSO);
+		
+		
+		/// CREACIÓN DE RADIO BUTTONS
 		JLabel lblSistemaOperativo = new JLabel("Elige un sistema operativo");
 		lblSistemaOperativo.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel.add(lblSistemaOperativo);
+		panelSO.add(lblSistemaOperativo);
 		
 		JRadioButton rdbtnWindows = new JRadioButton("Windows");
 		rdbtnWindows.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel.add(rdbtnWindows);
+		panelSO.add(rdbtnWindows);
 		
 		JRadioButton rdbtnMac = new JRadioButton("Mac");
 		rdbtnMac.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel.add(rdbtnMac);
+		panelSO.add(rdbtnMac);
 		
 		JRadioButton rdbtnLinux = new JRadioButton("Linux");
 		rdbtnLinux.setFont(new Font("Tahoma", Font.BOLD, 11));
-		panel.add(rdbtnLinux);
+		panelSO.add(rdbtnLinux);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBounds(36, 138, 409, 106);
-		contentPane.add(panel_1);
+		ButtonGroup grupo = new ButtonGroup();
+		grupo.add(rdbtnWindows);
+		grupo.add(rdbtnMac);
+		grupo.add(rdbtnLinux);
+		
+		
+		/// SECCIÓN ESPECIALIDAD
+		JPanel panelEspecialidad = new JPanel();
+		panelEspecialidad.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panelEspecialidad.setBounds(36, 98, 409, 106);
+		contentPane.add(panelEspecialidad);
 		
 		JLabel lblElijeUnaEspecialidad = new JLabel("Elige una especialidad");
 		lblElijeUnaEspecialidad.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblElijeUnaEspecialidad.setHorizontalAlignment(SwingConstants.LEFT);
 		lblElijeUnaEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
+		
+		///CHECKS BOX ESPECIALIDAD
 		JCheckBox chckbxProgramacin = new JCheckBox("Programaci\u00F3n");
 		chckbxProgramacin.setFont(new Font("Tahoma", Font.BOLD, 11));
 		chckbxProgramacin.setHorizontalAlignment(SwingConstants.CENTER);
@@ -97,46 +111,50 @@ public class SeleccionMultiple extends JFrame {
 		JCheckBox chckbxAdministracin = new JCheckBox("Administraci\u00F3n");
 		chckbxAdministracin.setFont(new Font("Tahoma", Font.BOLD, 11));
 		chckbxAdministracin.setHorizontalAlignment(SwingConstants.CENTER);
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+		GroupLayout gl_panelEspecialidad = new GroupLayout(panelEspecialidad);
+		gl_panelEspecialidad.setHorizontalGroup(
+			gl_panelEspecialidad.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panelEspecialidad.createSequentialGroup()
 					.addContainerGap(52, Short.MAX_VALUE)
 					.addComponent(lblElijeUnaEspecialidad)
 					.addGap(30)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panelEspecialidad.createParallelGroup(Alignment.LEADING)
 						.addComponent(chckbxDiseoGrfico)
 						.addComponent(chckbxAdministracin)
 						.addComponent(chckbxProgramacin))
 					.addGap(94))
 		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
+		gl_panelEspecialidad.setVerticalGroup(
+			gl_panelEspecialidad.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panelEspecialidad.createSequentialGroup()
 					.addGap(16)
 					.addComponent(chckbxProgramacin)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_panelEspecialidad.createParallelGroup(Alignment.BASELINE)
 						.addComponent(chckbxAdministracin)
 						.addComponent(lblElijeUnaEspecialidad))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(chckbxDiseoGrfico)
 					.addContainerGap(13, Short.MAX_VALUE))
 		);
-		panel_1.setLayout(gl_panel_1);
+		panelEspecialidad.setLayout(gl_panelEspecialidad);
 		
+		
+		///SECCIÓN HORAS
 		JLabel lblCantidadDeHoras = new JLabel("Cantidad de horas en el computador:");
 		lblCantidadDeHoras.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCantidadDeHoras.setBounds(68, 297, 221, 14);
+		lblCantidadDeHoras.setBounds(79, 240, 221, 14);
 		contentPane.add(lblCantidadDeHoras);
 		
-		textField = new JTextField();
-		textField.setBounds(299, 294, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtHoras = new JTextField();
+		txtHoras.setBounds(310, 237, 86, 20);
+		contentPane.add(txtHoras);
+		txtHoras.setColumns(10);
 		
+		
+		///BOTÓN ACEPTAR
 		JButton btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(356, 349, 89, 23);
+		btnAceptar.setBounds(356, 294, 89, 23);
 		btnAceptar.setBackground(SystemColor.activeCaption);
 		contentPane.add(btnAceptar);
 		
@@ -165,10 +183,12 @@ public class SeleccionMultiple extends JFrame {
 					segundo.add(chckbxDiseoGrfico.getText());
 				}
 				
-				tercero = textField.getText();
+				tercero = txtHoras.getText();
 				
 				
+				///MENSAJE EMERGENTE
 				Mensaje mensaje = new Mensaje(primero, segundo, tercero);
+				mensaje.setLocationRelativeTo(null);
 				mensaje.cambiarVisibilidad(true);
 			}
 		});

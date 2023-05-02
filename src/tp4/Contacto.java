@@ -39,7 +39,7 @@ public class Contacto extends JFrame{
 			//constructor
 			public Contacto (){
 				//CONFIGURO PARÁMETROS Y UBICACIÓN DE LA VENTANA
-				Dimension dVentana = new Dimension(400, 400);	//MISMO TAMAÑO QUE EN SETBOUNDS!!!
+				Dimension dVentana = new Dimension(400, 300);	//MISMO TAMAÑO QUE EN SETBOUNDS!!!
 				Dimension dPantalla = Toolkit.getDefaultToolkit().getScreenSize();
 				int posX = (int) (dPantalla.getWidth() - dVentana.getWidth()) / 2;
 				int posY = (int) (dPantalla.getHeight() - dVentana.getHeight()) / 2;
@@ -48,7 +48,7 @@ public class Contacto extends JFrame{
 				
 				setTitle("Contactos");
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				setBounds(posX,posY,400,400);
+				setBounds(posX,posY,400,300);
 				setTitle("Contactos");
 				getContentPane().setLayout(null);
 				
