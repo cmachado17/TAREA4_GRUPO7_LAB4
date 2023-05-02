@@ -33,6 +33,8 @@ public class Contacto extends JFrame{
 			private JTextField txtFechaNacimiento;
 			private JLabel resultado;
 			private JButton btnAceptar = new JButton();
+			private JLabel label;
+			
 			
 			//constructor
 			public Contacto (){
@@ -71,17 +73,21 @@ public class Contacto extends JFrame{
 				fechaNacimiento.setBounds(50, 163, 74, 30);
 				
 				txtNombre = new JTextField();
+				txtNombre.setColumns(10);
 				txtNombre.addKeyListener(new KeyAdapter() {
 					@Override
 					public void keyTyped(KeyEvent letra) {
 						char c = letra.getKeyChar();
 						
-						if((c<'a' || c>'z') && (c<'A' || c>'Z')) letra.consume();					
+						if((c<'a' || c>'z') && (c<'A' || c>'Z')) letra.consume();	
+						
+						
 					}
 				});
 				txtNombre.setBounds(130, 48, 200, 20);
 				
 				txtApellido = new JTextField();
+				txtApellido.setColumns(10);
 				txtApellido.addKeyListener(new KeyAdapter() {
 					@Override
 					public void keyTyped(KeyEvent e) {
@@ -93,6 +99,7 @@ public class Contacto extends JFrame{
 				txtApellido.setBounds(130, 88, 200, 20);
 				
 				txtTelefono = new JTextField();
+				txtTelefono.setColumns(10);
 				txtTelefono.addKeyListener(new KeyAdapter() {
 					@Override
 					public void keyTyped(KeyEvent a) {
@@ -105,6 +112,7 @@ public class Contacto extends JFrame{
 				txtTelefono.setBounds(130, 128, 200, 20);
 				
 				txtFechaNacimiento = new JTextField();
+				txtFechaNacimiento.setColumns(10);
 				txtFechaNacimiento.addKeyListener(new KeyAdapter() {
 					@Override
 					public void keyTyped(KeyEvent f) {
@@ -145,7 +153,7 @@ public class Contacto extends JFrame{
 				
 				setContentPane(panel);
 				
-				JLabel label = new JLabel("Los datos ingresados fueron:");
+				label = new JLabel();
 				label.setBounds(29, 279, 208, 14);
 				panel.add(label);
 				
@@ -191,12 +199,14 @@ public class Contacto extends JFrame{
 						txtFechaNacimiento.setBackground(Color.WHITE);
 					}
 					if (bValidacion) {
+						label.setText("Los datos ingresados fueron:");
 						resultado.setText(txtNombre.getText() + ", " 
 									+ txtApellido.getText() + ", " + txtTelefono.getText() 
 									+ ", " + txtFechaNacimiento.getText());
 						resetearCampos();
 					}else {
 						resultado.setText("");
+						label.setText("");
 					}
 				}
 				

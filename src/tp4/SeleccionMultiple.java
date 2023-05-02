@@ -1,15 +1,17 @@
 package tp4;
 
-import java.awt.BorderLayout;
+
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -26,10 +28,8 @@ import javax.swing.JButton;
 
 public class SeleccionMultiple extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
 	private JTextField textField;
 
@@ -60,7 +60,7 @@ public class SeleccionMultiple extends JFrame {
 		panel.setBounds(36, 59, 409, 42);
 		contentPane.add(panel);
 		
-		JLabel lblSistemaOperativo = new JLabel("Elije un sistema operativo");
+		JLabel lblSistemaOperativo = new JLabel("Elige un sistema operativo");
 		lblSistemaOperativo.setFont(new Font("Tahoma", Font.BOLD, 11));
 		panel.add(lblSistemaOperativo);
 		
@@ -81,7 +81,7 @@ public class SeleccionMultiple extends JFrame {
 		panel_1.setBounds(36, 138, 409, 106);
 		contentPane.add(panel_1);
 		
-		JLabel lblElijeUnaEspecialidad = new JLabel("Elije una especialidad");
+		JLabel lblElijeUnaEspecialidad = new JLabel("Elige una especialidad");
 		lblElijeUnaEspecialidad.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblElijeUnaEspecialidad.setHorizontalAlignment(SwingConstants.LEFT);
 		lblElijeUnaEspecialidad.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -139,6 +139,39 @@ public class SeleccionMultiple extends JFrame {
 		btnAceptar.setBounds(356, 349, 89, 23);
 		btnAceptar.setBackground(SystemColor.activeCaption);
 		contentPane.add(btnAceptar);
+		
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String primero = null;
+				ArrayList <String> segundo = new ArrayList <String>();
+				String tercero = null;
+				
+				if(rdbtnLinux.isSelected()) {
+					primero = rdbtnLinux.getText();
+				}else if(rdbtnWindows.isSelected()) {
+					primero = rdbtnWindows.getText();
+				}else {
+					primero = rdbtnMac.getText();
+				}
+				
+				if(chckbxProgramacin.isSelected()) {
+					segundo.add(chckbxProgramacin.getText());
+				}
+				if(chckbxAdministracin.isSelected()) {
+					segundo.add(chckbxAdministracin.getText());
+				}
+				if(chckbxDiseoGrfico.isSelected()) {
+					segundo.add(chckbxDiseoGrfico.getText());
+				}
+				
+				tercero = textField.getText();
+				
+				
+				Mensaje mensaje = new Mensaje(primero, segundo, tercero);
+				mensaje.cambiarVisibilidad(true);
+			}
+		});
 
 	}
 }

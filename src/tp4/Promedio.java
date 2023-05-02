@@ -35,6 +35,7 @@ public class Promedio extends JFrame {
 	private JTextField txtNota3;
 	private JTextField txtPromedio;
 	private JTextField txtCondicion;
+	private JLabel lblError;
 		
 	public void cambiarVisibilidad() {
 		setVisible(true);
@@ -85,13 +86,13 @@ public class Promedio extends JFrame {
 				   e.consume();
 			   }
 			   
-			   if (key == '.' && txtNota1.getText().contains(".") || key == '.' && txtNota2.getText().contains(".") || key == '.' && txtNota3.getText().contains(".")) {
+			   if (key == '.' && txtNota1.getText().contains(".") ) {
 				   e.consume();
 				   }
 			}
 		});
 		txtNota1.setBounds(118, 33, 144, 20);
-		txtNota1.setColumns(10);
+		txtNota1.setColumns(4);
 		panelNotas.add(txtNota1);
 		
 		
@@ -112,7 +113,7 @@ public class Promedio extends JFrame {
 				   e.consume();
 			   }
 			   
-			   if (key == '.' && txtNota1.getText().contains(".") || key == '.' && txtNota2.getText().contains(".") || key == '.' && txtNota3.getText().contains(".")) {
+			   if (key == '.' && txtNota2.getText().contains(".") ) {
 				   e.consume();
 			   }
 			}
@@ -134,7 +135,7 @@ public class Promedio extends JFrame {
 				   e.consume();
 			   }
 			   
-			   if (key == '.' && txtNota1.getText().contains(".") || key == '.' && txtNota2.getText().contains(".") || key == '.' && txtNota3.getText().contains(".")) {
+			   if (key == '.' && txtNota3.getText().contains(".") ) {
 				   e.consume();
 			   }
 			}
@@ -189,6 +190,11 @@ public class Promedio extends JFrame {
 		panelCalculo.add(txtCondicion);
 		txtCondicion.setColumns(10);
 		
+		lblError = new JLabel("");
+		lblError.setForeground(Color.RED);
+		lblError.setBounds(59, 22, 230, 13);
+		panelCalculo.add(lblError);
+		
 		
 		///BOTÓN CALCULAR
 		JButton btnCalcular = new JButton("CALCULAR");
@@ -196,6 +202,9 @@ public class Promedio extends JFrame {
 		contentPane.add(btnCalcular);
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				//vaciar el error
+				lblError.setText("");
 				
 				float suma=0;
 				float nota1=0, nota2=0, nota3=0;
@@ -224,17 +233,25 @@ public class Promedio extends JFrame {
 						txtNota3.setBackground(Color.white);
 					}
 					
+						
 					if(txtNota1.getText().length()!=0 && txtNota2.getText().length()!=0 && txtNota3.getText().length()!=0) {
 //						suma=Float.parseFloat(txtNota1.getText()) + Float.parseFloat(txtNota2.getText()) + Float.parseFloat(txtNota3.getText());
 						nota1=Float.parseFloat(txtNota1.getText());
 						nota2=Float.parseFloat(txtNota2.getText());
 						nota3=Float.parseFloat(txtNota3.getText());
 						
+						//corroborar que el rango de las notas ingresadas este entre 1 y 10
+						if((nota1 >= 1 && nota1 <= 10) && (nota2 >= 1 && nota2 <= 10)
+								&& (nota3>= 1 && nota3 <= 10)) 
+						{
 						suma=nota1+nota2+nota3;
 						hayNota=true;
 						hayNotasDesaprobadas=hayDesaprobadas(nota1, nota2, nota3);
 						
 						txtPromedio.setText(Float.toString(suma/3));
+						} else {
+							lblError.setText("Ingrese notas validas");
+						}
 					}
 				} catch (NumberFormatException e) {
 					 System.out.println("Sólo números!");
@@ -284,11 +301,18 @@ public class Promedio extends JFrame {
 		contentPane.add(btnNuevo);
 		btnNuevo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//vaciar el error
+				lblError.setText("");
+				
 				 txtNota1.setText("");;
 				 txtNota2.setText("");
 				 txtNota3.setText("");
 				 txtPromedio.setText("");
 				 txtCondicion.setText("");
+				 
+				 txtNota1.setBackground(Color.white);
+				 txtNota2.setBackground(Color.white);
+				 txtNota3.setBackground(Color.white);
 			}
 		});
 		btnNuevo.setBackground(SystemColor.activeCaption);
