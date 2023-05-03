@@ -197,7 +197,7 @@ public class SeleccionMultiple extends JFrame {
 					segundo.add(chckbxDiseoGrfico.getText());
 				}
 							
-				tercero = txtHoras.getText();
+				tercero = txtHoras.getText() +" Hs";
 				
 				
 				///MENSAJE EMERGENTE
