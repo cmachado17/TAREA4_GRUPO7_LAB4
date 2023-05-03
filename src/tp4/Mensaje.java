@@ -24,7 +24,30 @@ public class Mensaje extends JFrame {
 	public void cambiarVisibilidad(boolean estado) {
 				setVisible(estado);
 	}
-	
+	public Mensaje (String a) {
+	   
+		this.primero = a;
+		
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(350, 350, 700, 150);
+		setTitle("Mensaje");
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
+		
+		JLabel lblLogo = new JLabel("");
+		lblLogo.setIcon(new ImageIcon("logo.jpg"));
+		lblLogo.setBounds(21, 22, 56, 51);
+		contentPane.add(lblLogo);
+		
+		JLabel lblInfo = new JLabel("");
+		lblInfo.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblInfo.setBounds(87, 22, 550, 47);
+		contentPane.add(lblInfo);
+		
+		lblInfo.setText(primero);
+	}
 	public Mensaje(String primero, ArrayList <String> segundo, String tercero) {
 		
 		this.primero = primero;

@@ -26,6 +26,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class SeleccionMultiple extends JFrame {
 
@@ -147,6 +149,16 @@ public class SeleccionMultiple extends JFrame {
 		contentPane.add(lblCantidadDeHoras);
 		
 		txtHoras = new JTextField();
+		txtHoras.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c = e.getKeyChar();
+				
+				if ((c<'0' || c>'9')) e.consume();	
+				
+			}
+		});
+	
 		txtHoras.setBounds(310, 237, 86, 20);
 		contentPane.add(txtHoras);
 		txtHoras.setColumns(10);
@@ -160,11 +172,11 @@ public class SeleccionMultiple extends JFrame {
 		
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				 
 				String primero = null;
 				ArrayList <String> segundo = new ArrayList <String>();
 				String tercero = null;
-				
+							
 				if(rdbtnLinux.isSelected()) {
 					primero = rdbtnLinux.getText();
 				}else if(rdbtnWindows.isSelected()) {
@@ -172,24 +184,34 @@ public class SeleccionMultiple extends JFrame {
 				}else {
 					primero = rdbtnMac.getText();
 				}
-				
+			 
 				if(chckbxProgramacin.isSelected()) {
 					segundo.add(chckbxProgramacin.getText());
 				}
+				 
 				if(chckbxAdministracin.isSelected()) {
 					segundo.add(chckbxAdministracin.getText());
 				}
+				
 				if(chckbxDiseoGrfico.isSelected()) {
 					segundo.add(chckbxDiseoGrfico.getText());
 				}
-				
+							
 				tercero = txtHoras.getText();
 				
 				
 				///MENSAJE EMERGENTE
+				if(primero.isEmpty() || segundo.isEmpty() || tercero.isEmpty()) 
+			   {
+					Mensaje mensaje = new Mensaje("Seleccione correctamente todos los campos solicitados.");
+					mensaje.setLocationRelativeTo(null);
+					mensaje.cambiarVisibilidad(true);
+			   }
+				else {
 				Mensaje mensaje = new Mensaje(primero, segundo, tercero);
 				mensaje.setLocationRelativeTo(null);
 				mensaje.cambiarVisibilidad(true);
+				}
 			}
 		});
 
